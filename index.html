@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Siemens Quiz App</title>
+</head>
+<body>
+    <div id="indexDiv">
+        <div id="btnDiv" >
+            <input type="button" id="playnow" class="play_button" value='' onclick="vidPlay()">
+        </div>
+        <div id="videoDiv">
+            <video autoplay muted id="myVideo">
+                <source src="media/logo_reveal.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div id="quesBody">
+        <div id="quesDiv">
+            <p id="question"></p>
+        </div>
+        <div id="answers">
+            <button class="chA" id="btnA" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+                <span class="spanA" id="a"> A) </span>
+            <p class="buttonText" id="choiceA"></p>
+            </button>
+            <button class="chB" id="btnB" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+                <span class="spanB" id="b"> B) </span>
+            <p class="buttonText" id="choiceB"></p>
+            </button>
+            <button class="chC" id="btnC" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+                <span class="spanC" id="c"> C) </span>
+            <p class="buttonText" id="choiceC"></p>
+            </button>
+            <button class="chD" id="btnD" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+                <span class="spanD" id="d"> D) </span>
+            <p class="buttonText" id="choiceD"></p>
+            </button>
+
+            <div id="CorrectAnsDiv"></div>
+        </div>
+    </div>
+    <div id="wrongAnswerFb">
+        <video autoplay muted loop id="myVideo2">
+            <source src="media/background_did_you_know.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+
+          <div id="answerResultDiv">
+          </div>
+
+          <div>
+            <!-- Div to show answer is right or wrong -->
+    
+            <!--Div to show correct answer detail "didyouknow"-->
+            <div id="answerDetailDiv">
+            </div>
+
+             <!--Next Question Button or Play Again Button (if reach to the last question)-->
+             <button class="button" id="nextQueButton" type="button"></button>
+            
+             <!--10 seconds Countdown Timer Div-->
+             <div class="circleCountDown" id="countdown"></div>
+         </div>
+         
+        </div>
+        
+
+              <!-- <h3 id="CorrectAnsDiv"></h3> -->
+
+          <!-- <div id="exp">
+              <h6 id="explanation1"></h6>
+          </div> -->
+
+</body>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+
+</html>
