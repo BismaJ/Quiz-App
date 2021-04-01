@@ -21,4 +21,13 @@ var quizzes = [{
     choiceD: `By sending them my e-mail.`,
     correct: 'A',
     didYouKnow: `Syncplicity mobile app is available for both iOs and Android devices in your local play store or in Siemens catalog app.`,
+}, 
+    {
+    question: `Which is not JavaScript framework?`,
+    choiceA: `Vue.js.`,
+    choiceB: `Angular.`,
+    choiceC: `React(JavaScript Library).`,
+    choiceD: `Laravel.`,
+    correct: 'D',
+    didYouKnow: `Laravel is not JavaScript framework.`,
 }]
