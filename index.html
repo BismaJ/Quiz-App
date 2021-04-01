@@ -10,7 +10,7 @@
 <body>
     <div id="indexDiv">
         <div id="btnDiv" >
-            <input type="button" id="playnow" class="play_button" value='' onclick="vidPlay()">
+            <input type="button" id="playnow" class="play_button" value='' onclick="vidPlay()" />
         </div>
         <div id="videoDiv">
             <video autoplay muted id="myVideo">
@@ -20,27 +20,26 @@
     </div>
     <div id="quesBody">
         <div id="quesDiv">
-            <p id="question"></p>
+            <p class="question"></p>
         </div>
+                    <!--   Quiz Module    -->
         <div id="answers">
-            <button class="chA" id="btnA" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+            <button class="chA" id="btnA" onclick="checkFb('a','btnA')" value=''>
                 <span class="spanA" id="a"> A) </span>
-            <p class="buttonText" id="choiceA"></p>
+                <p class="buttonText" id="choiceA"></p>
             </button>
-            <button class="chB" id="btnB" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+            <button class="chB" id="btnB" onclick="checkFb('b','btnB')" value=''>
                 <span class="spanB" id="b"> B) </span>
-            <p class="buttonText" id="choiceB"></p>
+                <p class="buttonText" id="choiceB"></p>
             </button>
-            <button class="chC" id="btnC" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+            <button class="chC" id="btnC" onclick="checkFb('c','btnC')" value=''>
                 <span class="spanC" id="c"> C) </span>
-            <p class="buttonText" id="choiceC"></p>
+                <p class="buttonText" id="choiceC"></p>
             </button>
-            <button class="chD" id="btnD" onclick="checkFb(event, CorrectAnsDiv)" value=''>
+            <button class="chD" id="btnD" onclick="checkFb('d','btnD')" value=''>
                 <span class="spanD" id="d"> D) </span>
-            <p class="buttonText" id="choiceD"></p>
+                <p class="buttonText" id="choiceD"></p>
             </button>
-
-            <div id="CorrectAnsDiv"></div>
         </div>
     </div>
     <div id="wrongAnswerFb">
@@ -48,32 +47,12 @@
             <source src="media/background_did_you_know.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
           </video>
-
-          <div id="answerResultDiv">
-          </div>
-
-          <div>
-            <!-- Div to show answer is right or wrong -->
-    
-            <!--Div to show correct answer detail "didyouknow"-->
-            <div id="answerDetailDiv">
-            </div>
-
-             <!--Next Question Button or Play Again Button (if reach to the last question)-->
-             <button class="button" id="nextQueButton" type="button"></button>
-            
-             <!--10 seconds Countdown Timer Div-->
-             <div class="circleCountDown" id="countdown"></div>
-         </div>
-         
-        </div>
-        
-
-              <!-- <h3 id="CorrectAnsDiv"></h3> -->
-
-          <!-- <div id="exp">
-              <h6 id="explanation1"></h6>
-          </div> -->
+          <div id="answerResultDiv" >
+            <p id="text"></p><span class="circleCountDown" id="countdown"  style="margin-top: -10%;"></span>
+            <p id="correctanswer"></p>
+            <button id="nextQueButton" value="" onclick="next_quest()"><span id="nextQueButton"></span><span id="sign">&#8594;</span></button>
+          </div>          
+    </div>
 
 </body>
 
