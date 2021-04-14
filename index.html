@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
-    <title>Siemens Quiz App</title>
+    <title>Survey App</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div id="indexDiv">
-        <div id="btnDiv" >
-            <input type="button" id="playnow" class="play_button" value='' onclick="vidPlay()" />
-        </div>
-        <div id="videoDiv">
-            <video autoplay muted id="myVideo">
-                <source src="media/logo_reveal.mp4" type="video/mp4">
-            </video>
-        </div>
+    <div class="center" id="firstDiv">
+        <input type="button" id="pb" class="play_button" value='' onclick="play_video()" />
     </div>
-    <div id="quesBody">
-        <div id="quesDiv">
-            <p class="question"></p>
-        </div>
-                    <!--   Quiz Module    -->
-        <div id="answers">
-            <button class="chA" id="btnA" onclick="checkFb('a','btnA')" value=''>
-                <span class="spanA" id="a"> A) </span>
-                <p class="buttonText" id="choiceA"></p>
-            </button>
-            <button class="chB" id="btnB" onclick="checkFb('b','btnB')" value=''>
-                <span class="spanB" id="b"> B) </span>
-                <p class="buttonText" id="choiceB"></p>
-            </button>
-            <button class="chC" id="btnC" onclick="checkFb('c','btnC')" value=''>
-                <span class="spanC" id="c"> C) </span>
-                <p class="buttonText" id="choiceC"></p>
-            </button>
-            <button class="chD" id="btnD" onclick="checkFb('d','btnD')" value=''>
-                <span class="spanD" id="d"> D) </span>
-                <p class="buttonText" id="choiceD"></p>
-            </button>
-        </div>
-    </div>
-    <div id="wrongAnswerFb">
-        <video autoplay muted loop id="myVideo2">
-            <source src="media/background_did_you_know.mp4" type="video/mp4">
+    <div id="videoDiv">
+        <video autoplay muted id="firstVideo">
+            <source id="videoSource" src="media/logo_reveal.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
-          </video>
-          <div id="answerResultDiv" >
-            <p id="text"></p><span class="circleCountDown" id="countdown"  style="margin-top: -10%;"></span>
-            <p id="correctanswer"></p>
-            <button id="nextQueButton" value="" onclick="next_quest()"><span id="nextQueButton"></span><span id="sign">&#8594;</span></button>
-          </div>          
+        </video>
     </div>
-
+    <div id="quiz">
+        <!-- quiz question  -->
+        <div class="card">
+            <p id="question"></p>
+        </div>
+            <!-- quiz answers -->
+        <div class="choice-container" id="A" onclick="checkME('a','A')">
+            <p class="choice-prefix" id="a">A</p>
+            <p class="choice-text" id="option1" >choice</p>
+        </div>
+        <div class="choice-container" id="B" onclick="checkME('b','B')">
+            <p class="choice-prefix" id="b">B</p>
+            <p class="choice-text" id="option2" >choice 2</p>
+        </div>
+        <div class="choice-container" id="C" onclick="checkME('c','C')">
+            <p class="choice-prefix" id="c">C</p>
+            <p class="choice-text" id="option3">choice 3</p>
+        </div>
+        <div class="choice-container" id="D" onclick="checkME('d','D')">
+            <p class="choice-prefix" id="d">D</p>
+            <p class="choice-text" id="option4">choice 4</p>
+        </div>
+    </div>
+    <div id="result_screen">
+        <video autoplay muted loop id="myVideo">
+            <source src="media/background_did_you_know.mp4" type="video/mp4">
+          </video>
+          
+          <div class="content">
+            <h1 id="greet"></h1><span id="timer-circle"></span>
+            <p id="rightanswer"></p>
+            <button id="myBtn" value="" onclick="next_question()"><span id="mybtn"></span><span id="sign">&#8594;</span></button>
+          </div>
+    </div>
 </body>
-
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
 
 </html>
