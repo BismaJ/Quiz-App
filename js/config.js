@@ -4,7 +4,6 @@ var wrongAnswer = 'Sorry, wrong answer!';
 var playNowButton = 'PLAY NOW';
 var skipButtonText = 'NEXT QUESTION';
 var playAgainButton = 'PLAY AGAIN';
-
 var quizzes = [{
     question: `SSN is being shutdown in May. What new collaboration tool is coming to Siemens?`,
     choiceA: `Facebook`,
@@ -21,13 +20,4 @@ var quizzes = [{
     choiceD: `By sending them my e-mail.`,
     correct: 'A',
     didYouKnow: `Syncplicity mobile app is available for both iOs and Android devices in your local play store or in Siemens catalog app.`,
-}, 
-    {
-    question: `Which is not JavaScript framework?`,
-    choiceA: `Vue.js.`,
-    choiceB: `Angular.`,
-    choiceC: `React(JavaScript Library).`,
-    choiceD: `Laravel.`,
-    correct: 'D',
-    didYouKnow: `Laravel is not JavaScript framework.`,
 }]
