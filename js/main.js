@@ -1,108 +1,101 @@
-document.getElementById('playnow').value = playNowButton;
-var ansDescription = document.getElementById('ansesultDiv');
-var quizStart = document.getElementById("quesDiv");
-var answerDiv = document.getElementById("answerDiv");
-var countdown = document.getElementById("countdown");
-// for next question
-var nextQueButton = document.getElementById("nextQueButton");
-
-var CorrectAnsDiv = document.getElementById("CorrectAnsDiv");
-var ansesultDiv = document.getElementById("answerResultDiv");
-var answerDetailDiv = document.getElementById("answerDetailDiv");
-
-// first useit Quiz video
-function vidPlay() {
-    document.getElementById('btnDiv').style.display = 'none';
-    document.getElementById('videoDiv').style.display = 'block'
+document.getElementById("pb").value = playNowButton;
+document.getElementsByTagName('source').src = introVideo;
+function play_video() {
+  document.getElementById("firstDiv").style.display = 'none';
+  document.getElementById("videoDiv").style.display = 'block';
 }
-video = document.getElementById('myVideo');
-video.onended = function() {
-    document.getElementById('btnDiv').style.display = 'none';
-    document.getElementById('videoDiv').style.display = 'none';
-    document.getElementById('quesBody').style.display = 'block';
-    document.getElementById('quesDiv').style.display = 'block';    
-    //I done this //
-    document.getElementById('answerResultDiv').style.display = 'block';
-    console.log("checking if fb is correct answer");
-    document.getElementById('btnDiv').style.display = 'none'
-    document.getElementById('videoDiv').style.display = 'none'
-}
-document.getElementById("nextQueButton").innerHTML = skipButtonText;
+video = document.getElementById('firstVideo');
+video.onended = function () {
+  document.body.style.backgroundImage = "url('media/Background_questions.png')";
+  document.body.classList.add("bg");
 
-/// to display questions
-const question = document.querySelector(".question");
-const choiceA = document.querySelector("#choiceA");
-const choiceB = document.querySelector("#choiceB");
-const choiceC = document.querySelector("#choiceC");
-const choiceD = document.querySelector("#choiceD");
+  document.getElementById("firstDiv").style.display = 'none';
+  document.getElementById("videoDiv").style.display = 'none';
+  document.getElementById("quiz").style.display = 'block';
 
-let count = 0;
+};
+
+document.getElementById("mybtn").innerHTML = skipButtonText;
+let firstQuestion = quizzes[0].question;
+const quest = document.querySelector("#question");
+const option1 = document.querySelector("#option1");
+const option2 = document.querySelector("#option2");
+const option3 = document.querySelector("#option3");
+const option4 = document.querySelector("#option4");
+
+let questionCount = 0;
 const loadQuestion = () => {
-  if (count === quizzes.length) {
-    document.getElementById('quesBody').style.display = 'none';
-    document.getElementById('quesDiv').style.display = 'none'; 
-    document.getElementById('indexDiv').style.display = 'block';
-    document.getElementById('btnDiv').style.display = 'block';
-
+  if (questionCount === quizzes.length) {
+    window.location.assign("index.html");
   }
   else {
-   const totalQuestions = quizzes[count];
-   question.innerHTML = totalQuestions.question;
-   choiceA.innerHTML = totalQuestions.choiceA;
-   choiceB.innerHTML = totalQuestions.choiceB;
-   choiceC.innerHTML = totalQuestions.choiceC;
-   choiceD.innerHTML = totalQuestions.choiceD;
+    const questionList = quizzes[questionCount];
+    quest.innerHTML = questionList.question;
+    option1.innerHTML = questionList.choiceA;
+    option2.innerHTML = questionList.choiceB;
+    option3.innerHTML = questionList.choiceC;
+    option4.innerHTML = questionList.choiceD;
   }
 }
-var totalSeconds = 10;
+var totalSeconds;
 loadQuestion();
-function checkFb(a, q) {
-  let selectedoption = document.getElementById(a);
-  if (selectedoption === quizzes[count].correct) {
-    document.getElementById(q).classList.add("correct");
-    totalSeconds = 10;
+function checkME(a, q) {
+  totalSeconds = 10;
+  let selectedoption = document.getElementById(a).innerHTML;
+  if (selectedoption === quizzes[questionCount].correct) {
+  document.getElementById(q).classList.add("correct");
     setTimeout(function () {
-      document.getElementById("quesBody").style.display = "none";
-      document.getElementById("wrongAnswerFb").style.display = "block";
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result_screen").style.display = "block";
+      document.getElementById("timer-circle").innerHTML=10;
+      totalSeconds=10;
+      setInterval(setTime, 1000);
       document.getElementById(q).classList.remove("correct");
-      document.getElementById("text").innerHTML = rightAnswer;
-      document.getElementById("correctanswer").style.fontSize = "30px";
-      document.getElementById("correctanswer").innerHTML = quizzes[count].ansDescription;
-    }, )
+      document.getElementById("greet").innerHTML = rightAnswer;
+      document.getElementById("rightanswer").style.fontSize = "40px";
+      document.getElementById("rightanswer").innerHTML = quizzes[questionCount].didYouKnow;
+      questionCount++;
+    }, 250);
   }
   else {
-    totalSeconds = 10;
+    let wrong = quizzes[questionCount].correct;
+    document.getElementById(wrong).classList.add("correct");
     document.getElementById(q).classList.add("incorrect");
     setTimeout(function () {
-      document.getElementById("quesBody").style.display = "none";
-      document.getElementById("wrongAnswerFb").style.display = "block";
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result_screen").style.display = "block";
+      document.getElementById("timer-circle").innerHTML=10;
+      totalSeconds=10;
+      setInterval(setTime, 1000);
       document.getElementById(q).classList.remove("incorrect");
-      document.getElementById("text").innerHTML = wrongAnswer;
-      document.getElementById("correctanswer").style.fontSize = "30px";
-      document.getElementById("correctanswer").innerHTML = quizzes[count].didYouKnow;
-    }, )
+      document.getElementById(wrong).classList.remove("correct");
+      document.getElementById("greet").innerHTML = wrongAnswer;
+      document.getElementById("rightanswer").style.fontSize = "40px";
+      document.getElementById("rightanswer").innerHTML = quizzes[questionCount].didYouKnow;
+      questionCount++;
+    }, 250);
   }
-  if (count === 2) {
-    document.getElementById("nextQueButton").innerHTML = playAgainButton;
-    // document.getElementById('quesBody').style.display = 'none';
-    // document.getElementById('quesDiv').style.display = 'none'; 
-  }
-  count++;
+
 }
-function next_quest() {
+
+if (questionCount === 2) {
+  document.getElementById("mybtn").innerHTML = playAgainButton;
+  document.getElementById("sign").innerHTML = "&#8635";
+  setInterval(setTime, 1000);
+}
+function next_question() {
   loadQuestion();
-  document.getElementById("quesBody").style.display = "block";
-  document.getElementById("wrongAnswerFb").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
+  document.getElementById("result_screen").style.display = "none";
 }
-  
- // ten second timer 
-var timerlabel = document.getElementById("countdown");
-setInterval(setTime, 1000);
+// ten second timer 
+var timerlabel = document.getElementById("timer-circle");
+
 function setTime() {
   --totalSeconds;
   timerlabel.innerHTML = pad(totalSeconds % 12);
   if (totalSeconds === 0) {
-    next_quest();
+    next_question();
     totalSeconds = 10;
   }
 }
@@ -113,5 +106,4 @@ function pad(val) {
   } else {
     return valString;
   }
-}  
-  
+}
